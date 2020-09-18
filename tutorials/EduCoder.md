@@ -21,10 +21,7 @@ EduCoder 官网链接为 https://www.educoder.net
 
 ![](imgs/edu_join_class.png) 
 
-输入课堂邀请码
-
-* 课号为 CS171 的同学请输入邀请码 `GHX9U`
-* 课号为 CS1581H(人工智能班) 的同学请输入邀请码 `LM5RK`
+输入课堂邀请码`XBD9M`
 
 ![](imgs/edu_join_class_invite_code.png)
 
