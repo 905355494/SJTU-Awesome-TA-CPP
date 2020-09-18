@@ -22,21 +22,21 @@ Common Problems Gathered from Students Learning Cpp.
 
 ## Tutorials
 
-#### [EduCoder相关问题汇总](https://github.com/OneForward/TACpp/blob/master/tutorials/EduCoder.md)
+#### [EduCoder相关问题汇总](https://github.com/905355494/SJTU-Awesome-TA-CPP/blob/master/tutorials/EduCoder.md)
 
-[点击此处跳转](https://github.com/OneForward/TACpp/blob/master/tutorials/EduCoder.md)
+[点击此处跳转](https://github.com/905355494/SJTU-Awesome-TA-CPP/blob/master/tutorials/EduCoder.md)
 
-#### [CodeBlocks相关问题汇总](https://github.com/OneForward/TACpp/blob/master/tutorials/CodeBlocks.md)
+#### [CodeBlocks相关问题汇总](https://github.com/905355494/SJTU-Awesome-TA-CPP/blob/master/tutorials/CodeBlocks.md)
 
-[点击此处跳转](https://github.com/OneForward/TACpp/blob/master/tutorials/CodeBlocks.md)
+[点击此处跳转](https://github.com/905355494/SJTU-Awesome-TA-CPP/blob/master/tutorials/CodeBlocks.md)
 
 #### [(Optional)在MacOS上使用VS Code配置C++环境](https://code.visualstudio.com/docs/cpp/config-clang-mac)
 
 [点击此处跳转](https://code.visualstudio.com/docs/cpp/config-clang-mac)
 
-#### [C++编程问题汇总【不断更新】](https://github.com/OneForward/TACpp/blob/master/tutorials/Cpp.md)
+#### [C++编程问题汇总【不断更新】](https://github.com/905355494/SJTU-Awesome-TA-CPP/blob/master/tutorials/Cpp.md)
 
-[点击此处跳转](https://github.com/OneForward/TACpp/blob/master/tutorials/Cpp.md)
+[点击此处跳转](https://github.com/905355494/SJTU-Awesome-TA-CPP/blob/master/tutorials/Cpp.md)
 
 ## Q & A 
 
