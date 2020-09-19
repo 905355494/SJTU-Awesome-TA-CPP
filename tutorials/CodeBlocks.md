@@ -257,7 +257,7 @@ int main()
 ```
 
 ```sh
--finput-charset=gbk -fexec-charset=gbk
+-finput-charset=utf-8 -fexec-charset=gbk
 ```
 
 ![](imgs/other-compiler-options.png)
