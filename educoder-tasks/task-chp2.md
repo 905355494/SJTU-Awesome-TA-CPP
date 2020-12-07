@@ -6,8 +6,6 @@
 
 读入两个整数，计算并输出它们的和、积、商和余数
 
-
-
 ### 任务描述
 
 
@@ -36,14 +34,25 @@
 7%3=1
 ```
 
-
----
-开始你的任务吧，祝你成功！
-
 ### 代码样例
 
 ```cpp
-
+#include<iostream>
+#include <stdio.h> 
+using namespace std;
+int main() 
+{
+    // 请在此添加代码
+    /********** Begin *********/
+    int a, b;
+    cin>>a>>b;
+    cout<<a<<"+"<<b<<"="<<a+b<<endl;
+    cout<<a<<"*"<<b<<"="<<a*b<<endl;
+    cout<<a<<"/"<<b<<"="<<a/b<<endl;
+    cout<<a<<"%"<<b<<"="<<a%b<<endl;
+    /********** End **********/
+  return 0;
+}
 ```
 
 
@@ -53,8 +62,6 @@
 ## 2.2. 任务名称
 
 读入用户输入的4个整型数，输出平均值
-
-
 
 ### 任务描述
 
@@ -90,7 +97,22 @@ cout<<setiosflags(ios::fixed)<<setprecision(2)<<pi<<endl;
 ### 代码样例
 
 ```cpp
-
+#include<iostream>
+#include <stdio.h>
+#include <iomanip>
+using namespace std;
+int main() 
+{
+    // 请在此添加代码
+    /********** Begin *********/
+    double a,b,c,d;
+    cin>>a>>b>>c>>d;
+    cout<<a<<"、"<<b<<"、"<<c<<"、"<<d<<"的平均值是";
+    double avg = (a+b+c+d)/4;
+    cout<<setiosflags(ios::fixed)<<setprecision(2)<<avg;
+    /********** End **********/
+  return 0;
+}
 ```
 
 
@@ -100,8 +122,6 @@ cout<<setiosflags(ios::fixed)<<setprecision(2)<<pi<<endl;
 ## 2.3. 任务名称
 
 读入一个三位整数num，求出num的百位数字、十位数字和个位数字
-
-
 
 ### 任务描述
 
@@ -127,6 +147,19 @@ cout<<setiosflags(ios::fixed)<<setprecision(2)<<pi<<endl;
 ### 代码样例
 
 ```cpp
+#include<iostream>
+#include <stdio.h> 
+using namespace std;
+int main() 
+{
+    // 请在此添加代码
+    /********** Begin *********/
+    int num;
+    cin>>num;
+    cout<<num<<"的百位数字是"<<num/100<<"，十位数字是"<<(num/10)%10<<"，个位数字是"<<num%10;
+    /********** End **********/
+  return 0;
+}
 
 ```
 
@@ -137,8 +170,6 @@ cout<<setiosflags(ios::fixed)<<setprecision(2)<<pi<<endl;
 ## 2.4. 任务名称
 
 输入一个四位数，将其加密后输出
-
-
 
 ### 任务描述
 
@@ -163,7 +194,30 @@ RMUV
 ### 代码样例
 
 ```cpp
+#include<iostream>
+#include <stdio.h> 
+using namespace std;
+int main() 
+{
 
+    // 请在此添加代码
+    /********** Begin *********/
+    int num;
+    cin>>num;
+    int num_1 = num/1000;
+    int num_2 = (num-(num_1*1000))/100;
+    int num_3 = (num%100)/10;
+    int num_4 = num%10;
+
+    char n1 = 64+13+num_1;
+    char n2 = 64+13+num_2;
+    char n3 = 64+13+num_3;
+    char n4 = 64+13+num_4;
+
+    cout<<n1<<n2<<n3<<n4;
+    /********** End **********/
+  return 0;
+}
 ```
 
 
@@ -171,8 +225,6 @@ RMUV
 ## 2.5. 任务名称
 
 计算两点之间的距离
-
-
 
 ### 任务描述
 
@@ -202,6 +254,23 @@ RMUV
 ### 代码样例
 
 ```cpp
+#include <iostream>
+#include <iomanip>
+#include <stdio.h>
+#include <math.h>
+using namespace std;
+int main()
+{
+    // 请在此添加代码
+    /********** Begin *********/
+    double x1,x2,y1,y2;
+    scanf("%lf,%lf",&x1,&y1);
+    scanf("%lf,%lf",&x2,&y2);
+    cout<<"("<<x1<<","<<y1<<")和("<<x2<<","<<y2<<")之间的距离是："<<setiosflags(ios::fixed)<<setprecision(2)<<sqrt(pow((x2-x1),2)+pow((y2-y1),2));
+    //printf("%f",x1);
+    /********** End **********/
+  return 0;
+}
 
 ```
 
@@ -212,8 +281,6 @@ RMUV
 ## 2.6. 任务名称
 
 输入一段时间的长度，计算该时间有多少小时多少分多少秒
-
-
 
 ### 任务描述
 
@@ -239,18 +306,31 @@ RMUV
 ### 代码样例
 
 ```cpp
-
+#include<iostream>
+#include <stdio.h>
+using namespace std;
+int main()
+{
+    // 请在此添加代码
+    /********** Begin *********/
+    int num;
+    cin>>num;
+    int h = num/3600;
+    int m = (num-h*3600)/60;
+    int s = num%60;
+    cout<<num<<"秒为"<<h<<"小时"<<m<<"分"<<s<<"秒";
+    /********** End **********/
+  return 0;
+}
 ```
 
 
 
 
 
-## 2.6. 任务名称
+## 2.7. 任务名称
 
 计算球体表面积和体积
-
-
 
 ### 任务描述
 
@@ -278,7 +358,23 @@ RMUV
 ### 代码样例
 
 ```cpp
-
+#include<iostream>
+#include <stdio.h>
+#include <iomanip>
+#include <math.h>
+using namespace std;
+int main() 
+{
+    // 请在此添加代码
+    /********** Begin *********/
+    double r;
+    cin>>r;
+    double v = (3.14/3)*4*r*r*r;
+    cout<<"半径为"<<r<<"的球体积为"<<setiosflags(ios::fixed)<<setprecision(1)<<v<<endl;
+    cout<<"半径为"<<setiosflags(ios::fixed)<<setprecision(0)<<r<<"的球体表面积为"<<setiosflags(ios::fixed)<<setprecision(1)<<4*3.14*pow(r,2);
+    /********** End **********/
+  return 0;
+}
 ```
 
 
