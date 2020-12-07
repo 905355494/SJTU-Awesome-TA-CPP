@@ -1,6 +1,8 @@
 # SJTU-Awesome-TA-CPP
 Common Problems Gathered from Students Learning Cpp.
 
+## [Educoder课程实训作业汇总与样例代码](https://github.com/905355494/SJTU-Awesome-TA-CPP/blob/master/educoder-tasks/README.md)
+
 ## C++ 程序设计学习指导【不断更新】
 
 > 遇到了任何问题都不要慌张，
