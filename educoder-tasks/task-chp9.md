@@ -131,7 +131,138 @@
 ### 代码样例
 
 ```cpp
+#include <iostream>
+#include <cstdio>
 
+using namespace std;
+
+void showOption(){
+    cout<<"欢迎使用股票分析系统："<<endl;
+    cout<<"1--输入股票价格序列"<<endl;
+    cout<<"2--查询股票价格"<<endl;
+    cout<<"3--输出升序的股票价格序列"<<endl;
+    cout<<"4--输出最大值和最小值的日期"<<endl;
+    cout<<"5--一笔交易的最大利润"<<endl;
+    cout<<"6--多笔交易的最大利润"<<endl;
+    cout<<"7--退出"<<endl;
+}
+
+// Your code here
+void inputList(int list[],int &num){
+    int x;
+    while(cin>>x && x!=-1){
+        list[num] = x;
+        num++;
+    }
+    list[num] = -1;
+}
+
+void outputList(int list[],const int &num){
+    for(int i=0; i<num; i++){
+        cout << list[i] << " ";
+    }
+    cout<<endl;
+}
+
+void ascentList(int list[],const int &num){
+    bool isSwap = false;
+    int *arr = new int[num], tmp;
+    for(int i=0;i<num;i++){
+        arr[i]=list[i];
+    }
+    for(int i=0; i<num-1; i++){
+        isSwap = false;
+        for(int j=0;j<num-1-i;j++){
+            if(arr[j]>arr[j+1]){
+                tmp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = tmp;
+                isSwap = true;
+            }
+        }
+        if(!isSwap) break;
+    }
+    for(int i=0; i<num; i++){
+        cout << arr[i] << " ";
+    }
+    cout<<endl;
+    delete [] arr;
+}
+
+void maxminList(int list[], const int &num){
+    int maxi =0, mini = 0;
+    int maxv =list[0], minv = list[0];
+    for(int i=1;i<num;i++){
+        if(maxv<list[i]){
+            maxv=list[i];
+            maxi=i;
+        }
+        if(minv>list[i]){
+            minv=list[i];
+            mini=i;
+        }
+    }
+    cout << mini << " " << maxi << endl;
+}
+
+int onetransaction(int list[], const int &num){
+    if(num==1) return 0;
+    int benifit = 0;
+    for(int i=1;i<num;i++){
+        if(list[i]-list[0]>benifit) benifit=list[i]-list[0];
+    }
+    if(benifit>onetransaction(list+1,num-1)) return benifit;
+    else return onetransaction(list+1,num-1);
+}
+
+int multitransaction(int list[], const int &num){
+    int sum = 0, i = 0, b, s;
+    bool isb = false, iss = false;
+    while(list[i]!=-1){
+        if(!isb){
+            if(list[i]>=list[i+1]) i++;
+            else{
+                b=list[i];
+                isb=true;
+                //i++;
+                }
+        }
+       
+        if(isb){
+            if(list[i]<=list[i+1]) i++;
+            else{
+                s=list[i];
+                sum+=s-b;
+                isb=false;
+            }
+        }
+    }
+    //for(int i=0;i<num;i++){
+        //if(list[i]<list[i+1])
+    //}
+    return sum;
+}
+
+int main()
+{
+
+    // Your code here
+    int num = 0, list[20] = {0};
+    int order;
+    showOption();
+    while(cin>>order && order!=7){
+        switch(order){
+            case 1: num = 0; inputList(list,num); break;
+            case 2: outputList(list,num); break;
+            case 3: ascentList(list,num); break;
+            case 4: maxminList(list,num); break;
+            case 5: cout<<onetransaction(list,num)<<endl; break;
+            case 6: cout<<multitransaction(list,num)<<endl; break;
+            default: cout<<"input error"; showOption();
+        }
+    }
+    return 0;
+}
 ```
 
 
