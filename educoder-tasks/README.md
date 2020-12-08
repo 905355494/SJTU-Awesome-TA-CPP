@@ -3,13 +3,15 @@
 
 ## C++ 程序设计 课程实训项目任务汇总与样例代码【不断更新】
 
-- [C++ Educoder实训项目样例代码【不断更新】](#c-程序设计学习指导不断更新)
-  - [第二章 程序的基本组成](#educoder相关问题汇总)
-  - [第三章 分支程序设计](#codeblocks相关问题汇总)
-  - [第四章 循环程序设计](#optional在macos上使用vs-code配置c环境)
-  - [第五章 数组（上、下）](#c编程问题汇总不断更新)
-  - [第六章 过程的封装：函数（上、下）]()
-  - [第七章 指针（上、下）]()
+- [C++ Educoder实训项目样例代码【不断更新】]()
+  - [第二章 程序的基本组成]()
+  - [第三章 分支程序设计]()
+  - [第四章 循环程序设计]()
+  - [第五章 数组（上、下）]
+  - [第六章 过程的封装：函数（上、下）]
+  - [第七章 指针（上、下）]
+  - [第八章 数据封装-结构体]
+  - [第九章 模块化开发]
 
 
 ## Demonstration Codes
@@ -25,3 +27,7 @@
 #### [第六章 过程的封装：函数（上、下）](https://github.com/905355494/SJTU-Awesome-TA-CPP/blob/master/educoder-tasks/task-chp6.md)
 
 #### [第七章 指针（上、下）](https://github.com/905355494/SJTU-Awesome-TA-CPP/blob/master/educoder-tasks/task-chp7.md)
+
+#### [第八章 数据封装-结构体](https://github.com/905355494/SJTU-Awesome-TA-CPP/blob/master/educoder-tasks/task-chp8.md)
+
+#### [第九章 模块化开发](https://github.com/905355494/SJTU-Awesome-TA-CPP/blob/master/educoder-tasks/task-chp9.md)
