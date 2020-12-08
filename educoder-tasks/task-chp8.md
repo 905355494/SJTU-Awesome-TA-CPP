@@ -38,7 +38,54 @@
 ### 代码样例
 
 ```cpp
+#include <iostream>
+using namespace std;
 
+struct Clock{
+    int hour;
+    int minute;
+    int second;
+};
+
+void setTime(Clock &myclock,int a,int b,int c){
+    myclock.hour = a;
+    myclock.minute = b;
+    myclock.second = c;
+}
+
+void increase(Clock &myclock){
+    int x=0,y=0;
+    x = (myclock.second+1)/60;
+    myclock.second = (myclock.second+1)%60;
+    y = (myclock.minute+x)/60;
+    myclock.minute = (myclock.minute+x)%60;
+    myclock.hour = (myclock.hour+y)%24;
+}
+
+void showTime(const Clock &myclock){
+    cout<<(myclock.hour>9?"":"0")<<myclock.hour<<":";
+    cout<<(myclock.minute>9?"":"0")<<myclock.minute<<":";
+    cout<<(myclock.second>9?"":"0")<<myclock.second<<endl;
+}
+
+int main()
+{
+    Clock myclock;
+    int a,b,c;
+    cin>>a>>b>>c;
+    setTime(myclock,a,b,c);
+    showTime(myclock);
+    increase(myclock);
+    showTime(myclock);
+    cin>>a>>b>>c;
+    setTime(myclock,a,b,c);
+    showTime(myclock);
+    increase(myclock);
+    showTime(myclock);
+
+
+    return 0;
+}
 ```
 
 
@@ -97,7 +144,56 @@ y = -12+34i
 ### 代码样例
 
 ```cpp
+#include <iostream>
 
+using namespace std;
+struct Compl{
+    int a;
+    int b;
+};
+
+void show(const Compl &mycompl){
+    cout<<mycompl.a<<(mycompl.b>=0?"+":"")<<mycompl.b<<"i"<<endl;
+}
+
+Compl add(const Compl &compl1, const Compl &compl2){
+    Compl result;
+    result.a = compl1.a+compl2.a;
+    result.b = compl1.b+compl2.b;
+    return result;
+}
+
+Compl mul(const Compl &compl1, const Compl &compl2){
+    Compl result;
+    result.a = compl1.a*compl2.a-compl1.b*compl2.b;
+    result.b = compl1.a*compl2.b+compl1.b*compl2.a;
+    return result;
+}
+
+int main()
+{
+    Compl myc1,myc2,result;
+    cin>>myc1.a>>myc1.b>>myc2.a>>myc2.b;
+    cout << "x = ";
+    show(myc1);
+    cout << "y = ";
+    show(myc2);
+    myc1 = add(myc1,myc2);
+    cout<<"x += y; x = ";
+    show(myc1);
+    myc2 = mul(myc2,myc1);
+    cout<<"y *= x; y = ";
+    show(myc2);
+    cout<<"x + y = ";
+    show(add(myc1,myc2));
+    cout<<"y * x = ";
+    show(mul(myc2,myc1));
+     cout << "x = ";
+    show(myc1);
+    cout << "y = ";
+    show(myc2);
+    return 0;
+}
 ```
 
 
@@ -144,6 +240,56 @@ Wangwu 1990 12 11 13901232222 No. 800 Dongchuan Road
 ### 代码样例
 
 ```cpp
+#include <iostream>
+
+using namespace std;
+struct Compl{
+    int a;
+    int b;
+};
+
+void show(const Compl &mycompl){
+    cout<<mycompl.a<<(mycompl.b>=0?"+":"")<<mycompl.b<<"i"<<endl;
+}
+
+Compl add(const Compl &compl1, const Compl &compl2){
+    Compl result;
+    result.a = compl1.a+compl2.a;
+    result.b = compl1.b+compl2.b;
+    return result;
+}
+
+Compl mul(const Compl &compl1, const Compl &compl2){
+    Compl result;
+    result.a = compl1.a*compl2.a-compl1.b*compl2.b;
+    result.b = compl1.a*compl2.b+compl1.b*compl2.a;
+    return result;
+}
+
+int main()
+{
+    Compl myc1,myc2,result;
+    cin>>myc1.a>>myc1.b>>myc2.a>>myc2.b;
+    cout << "x = ";
+    show(myc1);
+    cout << "y = ";
+    show(myc2);
+    myc1 = add(myc1,myc2);
+    cout<<"x += y; x = ";
+    show(myc1);
+    myc2 = mul(myc2,myc1);
+    cout<<"y *= x; y = ";
+    show(myc2);
+    cout<<"x + y = ";
+    show(add(myc1,myc2));
+    cout<<"y * x = ";
+    show(mul(myc2,myc1));
+     cout << "x = ";
+    show(myc1);
+    cout << "y = ";
+    show(myc2);
+    return 0;
+}
 
 ```
 
