@@ -85,7 +85,44 @@ Output: `to hometown Welcome my`
 ### 代码样例
 
 ```cpp
+#include <iostream>
+using namespace std;
 
+int main()
+{
+    /*Start your code here*/
+    char *input = new char[110];
+    char *output = new char[110];
+    int *p2 = new int[20];
+    int bias = 0;
+    int i = 0;
+    cin.getline(input,110);
+    char *p1 = input;
+    int count=0;
+    while(*p1!=0){
+        while(*p1==' '&&*p1!=0){ p1++; bias++;}
+        if(*p1!=0){ count++; p2[i]=bias; i++;}
+        while(*p1!=' '&&*p1!=0){ p1++; bias++;}
+        p2[i]=bias; i++;
+    }
+    cout << count <<endl;
+    char * order = new char[count+1];
+    cin.getline(order,count+1);
+    int m = 0;
+    for(int j = 0;j<count;j=j+1){
+        for(int k = p2[2*(order[j]-'0')];k<p2[2*(order[j]-'0')+1];k++){
+            output[m] = input[k];
+            m++;
+        }
+        output[m] = ' ';m++;
+    }
+    output[m-1]='\0';
+    cout << output;
+
+
+    /*end your code*/
+    return 0;
+}
 ```
 
 
@@ -106,6 +143,44 @@ output:`1`
 ### 代码样例
 
 ```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    /*Start your code here*/
+    char *input = new char[110];
+    char *output = new char[110];
+    int *p2 = new int[20];
+    int bias = 0;
+    int i = 0;
+    cin.getline(input,110);
+    char *p1 = input;
+    int count=0;
+    while(*p1!=0){
+        while(*p1==' '&&*p1!=0){ p1++; bias++;}
+        if(*p1!=0){ count++; p2[i]=bias; i++;}
+        while(*p1!=' '&&*p1!=0){ p1++; bias++;}
+        p2[i]=bias; i++;
+    }
+    cout << count <<endl;
+    char * order = new char[count+1];
+    cin.getline(order,count+1);
+    int m = 0;
+    for(int j = 0;j<count;j=j+1){
+        for(int k = p2[2*(order[j]-'0')];k<p2[2*(order[j]-'0')+1];k++){
+            output[m] = input[k];
+            m++;
+        }
+        output[m] = ' ';m++;
+    }
+    output[m-1]='\0';
+    cout << output;
+
+
+    /*end your code*/
+    return 0;
+}
 
 ```
 
@@ -381,7 +456,31 @@ output:`Yes`
 ### 代码样例
 
 ```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
 
+bool func(char array[ ], int len);
+
+int main() {
+    char ch[20];
+    bool result;
+
+    cin >> ch;
+
+	//此处填补几行代码
+    if (func(ch,strlen(ch))) cout << "Yes";
+    else cout << "No";
+
+    return 0;
+}
+
+bool func(char array[ ], int len) {
+	//此处填补几行代码
+    if(len==1||len==0) return true;
+    if(func(array+1,len-2)&&array[0]==array[len-1]) return true;
+    else return false;
+}
 ```
 
 
