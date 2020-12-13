@@ -1013,7 +1013,7 @@ int main()
 
 摩尔斯电码（又译为摩斯密码，Morse code）是一种时通时断的信号代码，用一系列圆点和破折号表示字母表中的每个英文字母，每个数字和一些特殊标点符号，如下图1所示。
 
-<p align="center"><img  style="border: 2px solid #ddd;padding: 5px; background: #fff;" src="/api/attachments/1217133" alt=""  height="90%" width="90%" /></p>
+![](image.png)
 <center>图1</center>
 
 
