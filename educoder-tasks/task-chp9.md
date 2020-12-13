@@ -335,7 +335,94 @@ Logo语言在个人计算机用户计算中非常流行，该语言形成了龟�
 ### 代码样例
 
 ```cpp
+#include <iostream>
+#include <cstring>
 
+using namespace std;
+
+void showOption(){
+    cout<<"欢迎来到Logo绘制系统："<<endl;
+    cout<<"1--笔向上"<<endl;
+    cout<<"2--笔向下"<<endl;
+    cout<<"3--左转"<<endl;
+    cout<<"4--右转"<<endl;
+    cout<<"5 n--前进n格（n为正整数）"<<endl;
+    cout<<"6--打印20*20数组"<<endl;
+    cout<<"9--数据结束（标记）"<<endl;
+}
+void printfloor(int floor[20][20]){
+    int a,b;
+    for(a=0;a<20;++a){
+        for(b=0;b<20;++b){
+            if(floor[a][b]==0) cout << ' ';
+            if(floor[a][b]==1) cout << '*';
+        }
+        cout << endl;
+    }
+}
+
+int main()
+{
+showOption();
+int floor[20][20]={0};
+int choice=1,step=0,direction=1,locationA=0,locationB=0,i;
+
+cin >> choice;
+while (choice!=9){
+    switch(choice){
+        case 1:
+            direction=1;
+            break;
+        case 2:
+            direction=3;
+            break;
+        case 3:
+            if(direction==1) direction=4;
+            else direction=direction-1;
+            break;
+        case 4:
+            if(direction==4) direction=1;
+            else direction=direction+1;
+            break;
+        case 5:
+            {
+                cin >> step;
+                switch(direction){
+                    case 1:
+                        for(i=1;i<=step;++i){
+                            floor[locationA-i][locationB]=1;
+                        }
+                        locationA=locationA-step;
+                        break;
+                    case 2:
+                        for(i=1;i<=step;++i){
+                            floor[locationA][locationB+i]=1;
+                        }
+                        locationB=locationB+step;
+                        break;
+                    case 3:
+                        for(i=1;i<=step;++i){
+                            floor[locationA+i][locationB]=1;
+                        }
+                        locationA=locationA+step;
+                        break;
+                    case 4:
+                        for(i=1;i<=step;++i){
+                            floor[locationA][locationB-i]=1;
+                        }
+                        locationB=locationB-step;
+                        break;
+                }
+            }break;
+        case 6:
+            printfloor(floor);
+            break;
+    }
+    cin >> choice;
+}
+
+    return 0;
+}
 ```
 
 
