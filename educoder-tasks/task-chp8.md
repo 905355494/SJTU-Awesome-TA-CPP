@@ -465,6 +465,54 @@ int main()
 ### 代码样例
 
 ```cpp
+#include <iostream>
+using namespace std;
+
+struct List
+{
+    int num;
+    List *next;
+};
+
+int main()
+{
+    List *head,*p,*q;
+    int num;
+    head = NULL;
+
+    cin >> num;
+    if(num==-1) return 0;
+    else{
+        p = new List;
+        head = p;
+        p->num = num;
+        p->next = NULL;
+        cin>>num;
+    }
+    while(num != -1)
+    {
+        p = new List;
+        p->num = num;
+        p->next = head;
+        head = p;
+        cin >> num;
+    }
+
+    for(p = head; p != NULL; p = p->next)
+    {
+        cout << p->num << " ";
+    };
+    cout << endl;
+
+    for(p = head; p != NULL; p = q)
+    {
+        q = p->next;
+      delete p;
+    }
+
+    return 0;
+}
+
 
 ```
 
@@ -611,7 +659,153 @@ void insert_student() {
 ### 代码样例
 
 ```cpp
+#include <iostream>
+#include <cstring>
 
+using namespace std;
+
+struct Student
+{
+    long long sid;
+    char name[50];
+    int grades[3];
+};
+Student students[1005];
+int n_students = 0;
+/*
+    操作1： 添加学生信息
+*/
+void insert_student() {
+    long long sid; cin >> sid;
+    // 检查学生是否已存在
+    int pos = 0;
+    while (pos < n_students && students[pos].sid != sid) pos++;
+    Student& s = students[pos]; s.sid = sid;
+    for (int i = 0; i < 3; ++i) cin >> s.grades[i];
+    cin >> ws;
+    cin.getline(s.name, 50);
+    if (pos < n_students) return; // 更新已存在的学生时并不增加学生总数
+    n_students++;
+}
+void change_data() {
+    long long sid; cin >> sid;
+    // 检查学生是否已存在
+    int pos = 0;
+    char w[100];
+    while (pos < n_students && students[pos].sid != sid) pos++;
+    if (pos >= n_students) cin.getline(w,100);
+    else {
+        Student& s = students[pos]; s.sid = sid;
+        for (int i = 0; i < 3; ++i) cin >> s.grades[i];
+        cin >> ws;
+        cin.getline(s.name, 50);
+        if (pos < n_students) return; // 更新已存在的学生时并不增加学生总数
+        n_students++;
+    }
+}
+int main()
+{
+    int type;
+    long long temp;
+    char tmp[50];
+    Student t;
+    bool flag;
+    while (true)
+    {
+        cin >> type;
+        switch (type)
+        {
+        case 1:insert_student(); break;
+        case 2:change_data(); break;   
+        case 3:
+            cin >> temp;
+            for (int i = 0; i < n_students; i++)
+            {
+                if (students[i].sid == temp)
+                {
+                    students[i].sid = 0; break;
+                }
+            }
+            break;
+        case 4:
+            cin >> temp;
+            for (int i = 0; i < n_students; i++)
+            {
+                if (students[i].sid == temp)
+                {
+                    cout << students[i].sid << " " << students[i].name << " " << students[i].grades[0] << " " << students[i].grades[1] << " " << students[i].grades[2] << " " << endl; break;
+                }
+            }
+            break;
+        case 5:
+            bool f;
+            cin >> ws;
+            cin.getline(tmp, 50);
+            for (int i = 0; i < n_students; i++)
+            {
+                f = true;
+                for (int j = 0; tmp[j] != '\0'; j++)
+                {
+                    if (tmp[j] != students[i].name[j]) { f = false; break; }
+                }
+                if (f && students[i].sid != 0)
+                {
+                    cout << students[i].sid << " " << students[i].name << " " << students[i].grades[0] << " " << students[i].grades[1] << " " << students[i].grades[2] << " " << endl;
+                }
+            }
+            break;
+        case 6:
+            for (int i = 1; i < n_students; i++)
+            {
+                flag = false;
+                for (int j = 0; j < n_students - i; j++)
+                {
+                    if (students[j + 1].sid < students[j].sid)
+                    {
+                        t = students[j + 1]; students[j + 1] = students[j]; students[j] = t; flag = true;
+                    }
+                }
+            }
+            for (int i = 0; i < n_students; i++)
+            {
+                if (students[i].sid != 0)
+                    cout << students[i].sid << " " << students[i].name << " " << students[i].grades[0] << " " << students[i].grades[1] << " " << students[i].grades[2] << " " << endl;
+            }
+            break;
+        case 7:
+            for (int i = 1; i < n_students; i++)
+            {
+                flag = false;
+                for (int j = 0; j < n_students - i; j++)
+                {
+                    if (students[j + 1].grades[1] + students[j + 1].grades[2] + students[j + 1].grades[0] > students[j].grades[1] + students[j].grades[2] + students[j].grades[0])
+                    {
+                        t = students[j + 1]; students[j + 1] = students[j]; students[j] = t; flag = true;
+                    }
+                    else
+                    if(students[j + 1].grades[1] + students[j + 1].grades[2] + students[j + 1].grades[0] == students[j].grades[1] + students[j].grades[2] + students[j].grades[0])
+                {
+                    if (students[j + 1].sid < students[j].sid)
+                    {
+                        t = students[j + 1]; students[j + 1] = students[j]; students[j] = t; flag = true;
+                    }
+                }
+                }
+            }
+            for (int i = 0; i < n_students; i++)
+            {
+                if (students[i].sid != 0)
+                    cout << students[i].sid << " " << students[i].name << " " << students[i].grades[0] << " " << students[i].grades[1] << " " << students[i].grades[2] << " " << endl;
+            }
+            break;
+
+        }
+        if (type == 0) break;
+
+    }
+
+    return 0;
+}
 ```
 
 
@@ -674,7 +868,67 @@ nullptr
 ### 代码样例
 
 ```cpp
+#include <iostream>
 
+using namespace std;
+
+struct ListNode {
+    int val;
+    ListNode *next;
+};
+
+
+ListNode* reverseList(ListNode* head) {
+    /********* Begin *************/
+    if(head==NULL) return head;
+    else {
+    ListNode*p,*q,*m;
+    p=head;
+    q=head->next;
+    p->next=NULL;
+    for(;q!=NULL;){
+        m=q->next;
+        q->next=p;
+        p=q;
+        q=m;
+    }
+    return p;
+
+    }
+
+
+
+    /********* End *************/
+}
+
+
+
+ListNode* createList() {
+    int x;
+    ListNode head; 
+    ListNode* p = &head; head.next = NULL;
+    while (cin >> x) {
+        p->next = new ListNode; p->next->val = x; p->next->next = NULL;
+        p = p->next; 
+    }
+    return head.next;
+}
+
+void disp(ListNode* p) {
+    while (p)
+    {
+        printf("%d -> ", p->val); p = p->next;
+    }
+    printf("nullptr\n");
+}
+
+int main()
+{
+    ListNode* L1 = createList(); disp(L1);
+    ListNode* L2 = reverseList(L1); disp(L2);
+
+    return 0;
+}
 ```
 
 
@@ -720,7 +974,61 @@ $$m$$ 可能远大于 $$n$$ ， 注意使用取模以加快算法。
 ### 代码样例
 
 ```cpp
+using namespace std;
+struct link{
+    int data;
+    link *next;
+};
 
+int main()
+{   int n,m,t=0,x;
+    cin>>n>>m;
+    link *head,*p,*q;
+    
+    head=p=new link;
+
+
+    p->data=0;
+    for (int i=1;i<n;i++){
+        q=new link;
+        q->data=i;
+        p->next=q;
+        p=q;
+    }
+    p->next=head;
+
+    //报数删除
+     p=head;
+    for (t=n;p->next!=p;t--){
+       
+        x=m%t;
+        if(x==0) x=t;
+        if(x==1) x=t+1;
+        if(x%2==0) {
+            for(int i=1;i<=(x-2)/2;i++){
+               q=p->next;
+               p=q->next;
+            }
+               q=p->next;
+               p->next=q->next;
+               delete q;
+               p=p->next;
+        }
+        else {
+            for(int i=1;i<=(x-1)/2;i++){
+            q=p->next;
+            p=q->next;
+            }
+            q->next=p->next;
+            delete p;
+            p=q->next;
+        }
+    }
+
+    cout<<p->data+1;
+
+    return 0;
+}
 ```
 
 
