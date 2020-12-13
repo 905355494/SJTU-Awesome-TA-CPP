@@ -357,6 +357,40 @@ int main(void) {
 ### 代码样例
 
 ```cpp
+// 请在下方添加代码
+/********** Begin *********/
+#include <iostream>
+using namespace std;
+const int MAX_SIZE = 10;
+int main(){
+    int i, j, m, n;
+    int mat[MAX_SIZE+1][MAX_SIZE];
+
+    cin>>m>>n;
+    for(i = 0; i<m; i++){
+        for(j = 0; j<n; j++){
+            cin>>mat[i][j];
+        }
+    }
+
+    for(j = 0; j<n; j++){
+        cout<<mat[m-1][j]<<'\t';
+    }
+
+    cout<<endl;
+
+    for(i = 0; i<m-1; i++){
+        for(j = 0; j<n; j++){
+            cout<<mat[i][j]<<'\t';
+        }
+        cout<<endl;
+    }
+    
+    
+
+    return 0;
+}
+/********** End **********/
 
 ```
 
@@ -463,7 +497,47 @@ int main(void) {
 ### 代码样例
 
 ```cpp
+#include<iostream>
+using namespace std;
 
+int mat[20][20];
+int m=0,n=0;
+
+int pd(int i,int j){
+    for(int tj=0;tj<n;tj++){
+        if(mat[i][j]<mat[i][tj]){
+            return 2;
+        }
+    }
+    for(int ti=0;ti<m;ti++){
+        if(mat[i][j]>mat[ti][j]){
+            return 2;
+        }
+    }
+    return 1;
+}
+
+int main()
+{
+    cin>>m>>n;
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            cin>>mat[i][j];
+        }
+    }
+    int p=0;
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            if(pd(i,j)==1){
+                cout<<"mat["<<i<<"]["<<j<<"]="<<mat[i][j]<<endl;
+                p=1;
+            }
+        }
+    }
+    if(p==0) cout<<"Not Found"<<endl;
+    return 0;
+}
+/********** End **********/
 ```
 
 
@@ -988,46 +1062,5 @@ int main()
     }
     return 0;
 }
-```
-
-
-
-## 5.1.9 任务名称
-
-寻找鞍点-二维数组
-
-### 任务描述
-
-
-本关任务：在矩阵中，一个元素在所在行中是最大值，在所在列中是最小值，则被称为鞍点（Saddle point）。输入两个正整数 m 和 n（m，n≤10），然后输入该 m 行 n 列矩阵 mat 中的元素，如果找到 mat 的鞍点，就输出它的下标；如果找到多个鞍点，则分行输出它们的下标（行下标小的鞍点优先输出）；否则，输出“Not Found”。
-
-程序运行示例一：
-输入:
-
-```
-3 4
-3 2 1 4
-5 1 6 8
-6 7 8 9
-```
-
-输出：mat[0][3]=4
-
-程序运行示例二：
-输入:
-
-```
-3 4
-3 2 1 9
-4 7 6 8
-5 1 8 3
-```
-
-输出：Not Found
-
-### 代码样例
-
-```cpp
-
 ```
 
