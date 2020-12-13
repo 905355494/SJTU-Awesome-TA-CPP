@@ -387,6 +387,65 @@ int fpower(int x, int n) {
 ### 代码样例
 
 ```cpp
+#include <iostream>
+using namespace std;
+
+const int X=1e9+7;
+long long mod(long long a,long long b){
+    return (a+b)%b;
+}
+
+void fpower_Matrix(long long Mat[2][2] , int n){
+
+    long long M[2][2]={0};//初始化
+    M[0][0]=1;
+    M[0][1]=0;
+    M[1][0]=0;
+    M[1][1]=1;
+    //cout<<M[0][0]<<" "<<M[0][1]<<endl;
+    //cout<<M[1][0]<<" "<<M[1][1]<<endl<<endl;
+
+    //快速幂计算
+    while(n){
+
+        if(n%2){
+            long long a=M[0][0],b=M[0][1];
+            long long c=M[1][0],d=M[1][1];
+            M[0][0]=mod((mod(a*Mat[0][0],X)+mod(b*Mat[1][0],X)),X);
+            M[0][1]=mod((mod(a*Mat[0][1],X)+mod(b*Mat[1][1],X)),X);
+            M[1][0]=mod((mod(c*Mat[0][0],X)+mod(d*Mat[1][0],X)),X);
+            M[1][1]=mod((mod(c*Mat[0][1],X)+mod(d*Mat[1][1],X)),X);
+        }
+
+        long long a=Mat[0][0],b=Mat[0][1];
+        long long c=Mat[1][0],d=Mat[1][1];
+        Mat[0][0]=mod(mod(a*a,X)+mod(b*c,X),X);
+        Mat[0][1]=mod(mod(a*b,X)+mod(b*d,X),X);
+        Mat[1][0]=mod(mod(a*c,X)+mod(d*c,X),X);
+        Mat[1][1]=mod(mod(c*b,X)+mod(d*d,X),X);
+        n=n/2;
+    }
+
+    //输出答案
+    cout<<M[0][0]<<" "<<M[0][1]<<endl;
+    cout<<M[1][0]<<" "<<M[1][1]<<endl;
+}
+
+int main()
+{
+    long long M_t[2][2];
+    int n;
+    cin>>n;
+    for(int i=0;i<2;i++){
+        for(int j=0;j<2;j++){
+            cin>>M_t[i][j];
+        }
+    }
+    //初始化
+    fpower_Matrix(M_t,n);
+    cout<<endl;
+    return 0;
+}
 
 ```
 
