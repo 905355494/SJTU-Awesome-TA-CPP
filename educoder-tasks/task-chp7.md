@@ -420,6 +420,94 @@ int main(){
 ### 代码样例
 
 ```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    /*Start your code here*/
+ string ch[7];
+	char flag, b;
+	double num = 0;
+	int op = 0, n;
+	LINE:
+	cout << "Please input:"<<endl;
+	num=0;
+	for (int i = 0;i<7 ; i++) {
+		cin >> ch[i];
+	}
+	if (ch[2] == "inches") {
+		for (int i = 0; ch[5][i] != '\0'; i++) {
+			n = ch[5][i] - '0';
+			num = num * 10 + n;
+		}
+		if (ch[6] == "millimeters")op = 0;
+		if (ch[6] == "centimeters")op = 1;
+		if (ch[6] == "decimeters")op = 2;
+		if (ch[6] == "meters")op = 3;
+		switch (op) {
+		case 0:cout << num * 0.0394; break;
+		case 1:cout << num * 0.394; break;
+		case 2:cout << num * 3.94; break;
+		case 3:cout << num * 39.4;
+		}
+		cout << endl;
+		cout << "Go on?(y/n):";
+		cin >> b;
+		cin >> flag;
+		if (flag == 'y')goto LINE;
+		else return 0;
+	}
+	if(ch[2]=="yards") {
+		for (int i = 0; ch[5][i] != '\0'; i++) {
+			n = ch[5][i] - '0';
+			num = num * 10 + n;
+		}
+		if (ch[6] == "millimeters")op = 0;
+		if (ch[6] == "centimeters")op = 1;
+		if (ch[6] == "decimeters")op = 2;
+		if (ch[6] == "meters")op = 3;
+		switch (op) {
+		case 0:cout << num * 0.0010936; break;
+		case 1:cout << num * 0.010936; break;
+		case 2:cout << num * 0.10936; break;
+		case 3:cout << num * 1.0936;
+		}
+		cout << endl;
+		cout << "Go on?(y/n):";
+		cin >> b;
+		cin >> flag;
+		if (flag == 'y')goto LINE;
+		else return 0;
+	}
+	if (ch[2] == "feet") {
+		for (int i = 0; ch[5][i] != '\0'; i++) {
+			n = ch[5][i] - '0';
+			num = num * 10 + n;
+		}
+		if (ch[6] == "millimeters")op = 0;
+		if (ch[6] == "centimeters")op = 1;
+		if (ch[6] == "decimeters")op = 2;
+		if (ch[6] == "meters")op = 3;
+		switch (op) {
+		case 0:cout << num * 0.00328; break;
+		case 1:cout << num * 0.0328; break;
+		case 2:cout << num * 0.328; break;
+		case 3:cout << num * 3.28;
+		}
+		cout << endl;
+		cout << "Go on?(y/n):";
+		cin >> b;
+		cin >> flag;
+		if (flag == 'y')goto LINE;
+		else return 0;
+	}
+
+
+    /*end your code*/
+    return 0;
+}
 
 ```
 
@@ -612,6 +700,39 @@ output:
 ### 代码样例
 
 ```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void deletechar(char* str1, const char* str2) {
+	//在此处补全代码
+    int len1=strlen(str1);
+    int len2=strlen(str2);
+
+    if(str2[0]=='\0') return;
+    else{for(int i=0;i<len1;i++){
+            if(str1[i]==str2[0]){
+                for(int r=i;r<len1;r++){
+                    str1[r]=str1[r+1];
+                }
+                i=i-1;
+            }
+        }
+        return deletechar(str1,str2+1);
+    }
+}
+
+int main() {
+	char str1[80]={'\0'};
+    char str2[80]={'\0'};
+	cin.getline(str1,80);
+    cin.getline(str2,80);
+	deletechar(str1, str2);
+
+    cout<<str1<<endl;
+	return 0;
+}
+
 
 ```
 
@@ -839,6 +960,76 @@ output:
 `abdd`样例
 
 ```cpp
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+int main()
+{
+    int n,i=-1,j=0;
+    char ch,key;
+    cin>>n;
+    /*Start your code here*/
+    char *sentence=new char[n*30];
+    int *len=new int[n];
+
+
+    while(i<n){//提取字符串
+        j=1;
+        while((ch=cin.get())!='\n'){
+            sentence[i*30+j]=ch;
+            j++;
+        }
+        len[i]=j-1;
+        i++;
+    }
+    cin>>key;
+
+    for(i=0;i<n;i++){//删除字符
+        for(j=1;j<=len[i];j++){
+            if(sentence[30*i+j]==key){
+                for(int r=(30*i+j);r<=(30*i+len[i]);r++){
+                    sentence[r]=sentence[r+1];
+                }
+                j=j-1;
+                len[i]--;
+            }
+        }
+    }
+
+
+    bool change=false;
+    char tmp1;
+    int tmp2=0;
+    for(i=0;i<n;i++){
+        change=false;
+        for(int r=1;r<n;r++){
+            if(sentence[30*i+1]<sentence[30*(i+r)+1]){
+                for(j=1;j<30;j++){
+                    tmp1=sentence[30*i+j];
+                    sentence[30*i+j]=sentence[30*(i+r)+j];
+                    sentence[30*(i+r)+j]=tmp1;
+                    tmp2=len[i];
+                    len[i]=len[i+r];
+                    len[i+r]=tmp2;
+                }
+                change=true;
+            }
+        }
+        if(change==false) break;
+    }
+
+
+    for(int s=0;s<n;s++){//输出排序后字符串
+        for(int t=1;t<=len[s];t++){
+            cout<<sentence[30*s+t];
+        }
+        cout<<endl;
+    }
+
+    /*end your code*/
+    return 0;
+}
 
 ```
 
